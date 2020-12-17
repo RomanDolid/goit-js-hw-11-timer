@@ -7,7 +7,7 @@ const secsRef = document.querySelector('[data-value="secs"]');
 
 const date = new Date('Apr 19, 2021');
 
-function setTime(time) {
+function calculateTime(time) {
   let days = pad(Math.floor(time / 1000 / 60 / 60 / 24));
   let hours = pad(
     Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
@@ -26,8 +26,8 @@ function setCounterDate(value) {
 setInterval(() => {
   const currentDate = Date.now();
   const delta = date.getTime() - currentDate;
-  let x = setTime(delta);
-  setCounterDate(x);
+  let calculatedTimeData = calculateTime(delta);
+  setCounterDate(calculatedTimeData);
 }, 1000);
 
 function pad(el) {
